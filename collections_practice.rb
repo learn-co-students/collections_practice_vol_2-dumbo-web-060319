@@ -9,8 +9,13 @@ def begins_with_r(array)
 end
 
 # select
-def contain_a
-
+def contain_a(array)
+    # make a new array to push the right elements in
+    a_words = []
+    array.select do |word|
+        a_words << word if word.include?("a") 
+    end
+    a_words
 end
 
 # find
