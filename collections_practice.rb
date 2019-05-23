@@ -19,8 +19,8 @@ def contain_a(array)
 end
 
 # find
-def first_wa
-
+def first_wa(array)
+    array.find { |word| return word if word.to_s.include?("wa") }
 end
 
 # select
