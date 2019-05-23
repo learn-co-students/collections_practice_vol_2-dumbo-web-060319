@@ -23,9 +23,9 @@ def first_wa(array)
     array.find { |word| return word if word.to_s.include?("wa") }
 end
 
-# select
-def remove_non_strings
-
+# select/reject
+def remove_non_strings(array)
+    array.reject { |item| item.class != String }
 end
 
 # iterate and increment
