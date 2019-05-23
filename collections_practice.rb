@@ -1,8 +1,11 @@
 require "pry"
 
 # iterate - first instance where "r" is not first returns false
-def begins_with_r
-
+def begins_with_r(array)
+    array.select do |word| 
+        return false if word.split('')[0] != "r"  
+    end
+    true
 end
 
 # select
