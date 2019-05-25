@@ -81,17 +81,39 @@ def count_elements(array)
     hash_arr
 end
 
-# map/collect
-def merge_data
+# map/collect - datasets look like:
+# 1 => [{:first_name=>"blake", :motto=>"Have a koala-ty day!"}, 
+# {:first_name=>"ashley", :motto=>"I dub thee, 'Lady Brett Ashley'."}]
+# 2 => [{"blake"=>{:awesomeness=>10, :height=>"74", :last_name=>"johnson"},
+#  "ashley"=>{:awesomeness=>9, :height=>60, :last_name=>"dubs"}}]
+# merge order: awesomeness, first_name, height, last_name, motto
+def merge_data(d1, d2)
+    merged = []
 
+    d2.map do |set2|
+
+        set2.map do |name, stats|
+            d1.map do |set1|
+                # binding.pry
+                if name == set1[:first_name]
+                    group = stats.merge(set1)
+                    merged << Hash[group.sort]
+                end
+
+            end
+
+        end
+
+    end
+    merged
 end
 
 # find
-def find_cool
+def find_cool(cooliest)
 
 end
 
 # sorting
-def organize_schools
+def organize_schools(schools)
 
 end
