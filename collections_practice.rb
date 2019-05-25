@@ -28,9 +28,57 @@ def remove_non_strings(array)
     array.reject { |item| item.class != String }
 end
 
-# iterate and increment
-def count_elements
+# iterate and increment use map and select each name
+def count_elements(array)
+    # new hash to store the count
+    hash_arr = []
+    
+    # push first instance of names into names array
+    names = []
+    # hold count for each name in array - 
+    name_count_arr = []
+    # increment every time you see the name. If you don't see the name, push the current count into array, then reset to one
+    current_name_count = 0
 
+    array.map do |name_hash|
+        
+        name_hash.select do |title, name| # title = :name, name = "blake" || "ashley"
+            # No names in our array?
+            if names.length == 0
+                # push the name into the array
+                names << name
+                # add one to the count
+                current_name_count += 1
+
+            elsif names.include?(name) # Is this name in our array already?
+                current_name_count += 1 # Just increment it's count
+            elsif !names.include?(name) # New name?
+                name_count_arr << current_name_count # Push our current count into the array
+                names << name # Push our new name into names array
+                current_name_count = 1 # Set current count to 1
+            end
+
+            # if this is the last iteration
+            if array[-1][:name] == name
+                name_count_arr << current_name_count # Push our count into the array
+            end
+
+        end
+
+    end
+
+    # for each name
+    i = 0
+    while i < names.length
+        new_hash = {}
+        new_hash[:count] = name_count_arr[i]
+        new_hash[:name] = names[i]
+        hash_arr << new_hash
+
+        i += 1
+    end
+
+    hash_arr
 end
 
 # map/collect
