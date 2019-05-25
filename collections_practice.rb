@@ -116,6 +116,26 @@ def find_cool(cooliest)
 end
 
 # sorting
+# {"flatiron school bk"=>{:location=>"NYC"},
+#  "flatiron school"=>{:location=>"NYC"},
+#  "dev boot camp"=>{:location=>"SF"},
+#  "dev boot camp chicago"=>{:location=>"Chicago"},
+#  "general assembly"=>{:location=>"NYC"},
+#  "Hack Reactor"=>{:location=>"SF"}}
 def organize_schools(schools)
-
+    sorted = {}
+    # binding.pry
+    schools.map do |name, location|
+        location.map do |key, city|
+            # binding.pry
+            if sorted.has_key?(city)
+                sorted[city] << name
+            else
+                sorted[city] = []
+                sorted[city] << name
+            end
+            # binding.pry
+        end
+    end
+    sorted
 end
