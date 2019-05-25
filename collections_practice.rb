@@ -109,8 +109,10 @@ def merge_data(d1, d2)
 end
 
 # find
+# [{:name=>"ashley", :temperature=>"sort of cool"}, 
+#  {:name=>"blake", :temperature=>"cool"}]
 def find_cool(cooliest)
-
+    cooliest.select{|person| person[:temperature] == "cool"}
 end
 
 # sorting
